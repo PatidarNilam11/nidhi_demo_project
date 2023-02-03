@@ -9,4 +9,3 @@ Category.where(name: "Job").first_or_create
 Category.where(name: "News").first_or_create 
 Category.where(name: "Report").first_or_create 
 Category.where(name: "Event").first_or_create 
-
