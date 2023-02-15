@@ -17,6 +17,10 @@
 	<%= form.label :category_id %>
 	<%= form.collection_select :category_id, Category.order(:name), :id, :name %>
 	<br><br>
+ 
+  <%= form.label :image %>
+	<%= form.file_field :image %>
+	<br><br>
 
 	<%= form.label :active %>
 	<%= form.check_box :active %>

@@ -1,20 +1,30 @@
+<%= form_tag search_posts_path , method: :get %>
+<%= text_field_tag :search %>
+<%= button_to "Search" %>
+
 <h1>DashBoard</h1>
 
 <% @posts.each do |f| %>
   <b>Title:</b><%= f.title %><br>
-  <b>Description:</b><%= f.description %><br>
-  
+  <b>Description:</b><%= f.description %>
+ 
+  <%# attached:<%= f.image.attached?  %>
+  <%# <p>Image: <%= image_tag f.image, height:200, width:250  %></p> 
+  <p>Image: <%= image_tag f.image if f.image.attached? %></p>  
   <%= f.likes.size %><%= (f.likes.size) == 1 ? 'Like' : 'Likes'   %>
 
-  <% pre_like = f.likes.where(active: true).find { |like| like.user_id == current_user.id} %>
+  <% pre_like = f.likes.where(user_id: current_user).any? %>
+  
   <% if pre_like %>
-    <%= button_to 'Unlike', post_likes_path(f), method: :post %>
+    <%= button_to 'Unlike', like_post_post_path(f), method: :put %>
+     <%= image_tag "like.png", height: 20, width: 20 %>
   <% else %>
-    <%= button_to  'Like', post_likes_path(f), method: :post %>
+    <%= button_to  'Like', like_post_post_path(f),  method: :put %>
+    <%= image_tag "dislike.jpg", height: 30, width: 30 %>
   <% end %>
  
-  
   <%= button_to "Edit Post", edit_post_path(f), {method: :get}%>
   <%= button_to "Delete", post_path(f), method: :delete, data: {confirm: 'Are you sure?' } %><br>
+ 
+<% end %>    
 
-<% end %>

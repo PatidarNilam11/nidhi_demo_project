@@ -14,6 +14,7 @@
  *= require_self
  */
  
- /* body{
-  background-color: aqua;
- } */
+ body{
+  /* background-color: burlywood; */
+  background-image:  url(back.jpg);
+ }

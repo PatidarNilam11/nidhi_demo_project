@@ -1,0 +1,8 @@
+<h1>Search Results</h1>
+
+<% @results.each do |result| %>
+ <b>Title:</b><%= result.title %><br>
+  <b>Description:</b><%= result.description %><br>
+  <p>Image: <%= image_tag result.image if result.image.attached? %></p>  
+
+<% end%>
