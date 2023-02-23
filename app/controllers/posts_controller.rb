@@ -57,4 +57,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :description, :image, :category_id, :active)
   end
 end
-hy
+<h1> hii nidhi </h1>
+<h1> How are you <h1>
